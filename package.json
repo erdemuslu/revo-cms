@@ -1,0 +1,31 @@
+{
+  "name": "revo-cms",
+  "version": "1.0.0",
+  "description": "A basic cms to create your own blog",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start dev.ecosystem.config.js",
+    "prod": "pm2 start ecosystem.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erdemuslu/revo-cms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erdemuslu/revo-cms/issues"
+  },
+  "homepage": "https://github.com/erdemuslu/revo-cms#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.5",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-jwt": "^3.5.1",
+    "koa-limit": "^1.0.2",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.4.20"
+  }
+}
