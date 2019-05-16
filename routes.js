@@ -11,6 +11,7 @@ const router = new Router()
 router.get('/', ctx => Main.hello(ctx))
 
 // user
-router.post('/register', (ctx, next) => Auth.register(ctx, next))
+router.post('/user/register', (ctx, next) => Auth.register(ctx, next))
+router.post('/user/login', (ctx, next) => Auth.login(ctx, next))
 
 module.exports = router
