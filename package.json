@@ -4,7 +4,7 @@
   "description": "A basic cms to create your own blog",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start dev.ecosystem.config.js",
+    "dev": "pm2 start dev.ecosystem.config.js",
     "prod": "pm2 start ecosystem.config.js"
   },
   "repository": {
@@ -26,7 +26,7 @@
     "koa-jwt": "^3.5.1",
     "koa-limit": "^1.0.2",
     "koa-router": "^7.4.0",
-    "mongoose": "^5.4.20"
+    "mongoose": "^5.5.8"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

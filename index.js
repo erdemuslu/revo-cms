@@ -2,6 +2,9 @@ const Koa = require('koa')
 const BodyParser = require('koa-bodyparser')
 const limit = require('koa-limit')
 
+// load db
+const db = require('./helper/db')
+
 // load routes
 const router = require('./routes')
 
@@ -19,6 +22,9 @@ app.use(BodyParser())
 
 // define port
 const { PORT, NODE_ENV } = process.env
+
+// init db
+db()
 
 // init router setup
 app.use(router.routes())
