@@ -1,4 +1,5 @@
-const bcrypt = require('bcrypt')
+const { hash } = require('bcrypt')
+const { isEmail } = require('validator')
 
 // load mongoose models
 const User = require('../models/User')
@@ -6,7 +7,7 @@ const User = require('../models/User')
 class Auth {
   // encrypted password
   async handlePassword (password) {
-    const result = await bcrypt.hash(password, 10)
+    const result = await hash(password, 10)
 
     return result
   }
@@ -18,21 +19,39 @@ class Auth {
     return result
   }
 
+  async validate ({ email, password }) {
+    const emailCheck = await isEmail(email)
+    const passCheck = await password.length > 5
+
+    return { emailCheck, passCheck }
+  }
+
   // register user
   async register (ctx, next) {
+    // define status
+    let status
+
     // get username and password
-    const { username, password } = ctx.request.body
+    const { email, password } = ctx.request.body
 
-    // create hash
-    const newPassword = await this.handlePassword(password)
+    // run validate func
+    const { emailCheck, passCheck } = await this.validate({ email, password })
 
-    // get result of the save action into db
-    const log = await this.saveUser({ username, password: newPassword })
+    // save db or catch err
+    if (emailCheck && passCheck) {
+      // create hash
+      const newPassword = await this.handlePassword(password)
 
+      // save into db
+      status = await this.saveUser({ email, password: newPassword })
+    } else {
+      // define err msg
+      status = { emailCheck, passCheck }
+    }
+
+    // send data into client
     ctx.body = {
-      msg: 'OK',
-      newPassword,
-      log
+      status
     }
 
     next()

@@ -26,7 +26,8 @@
     "koa-jwt": "^3.5.1",
     "koa-limit": "^1.0.2",
     "koa-router": "^7.4.0",
-    "mongoose": "^5.5.8"
+    "mongoose": "^5.5.8",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
