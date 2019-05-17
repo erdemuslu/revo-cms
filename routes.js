@@ -21,5 +21,6 @@ router.post('/user/login', (ctx, next) => Auth.login(ctx, next))
 // post
 router.get('/post/list', checkToken, (ctx) => Post.list(ctx))
 router.post('/post/save', checkToken, (ctx, next) => Post.save(ctx, next))
+router.delete('/post/remove', checkToken, (ctx, next) => Post.remove(ctx, next))
 
 module.exports = router

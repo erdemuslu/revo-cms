@@ -16,6 +16,13 @@ class Post {
     return result
   }
 
+  // delete post
+  async deletePost (id) {
+    const result = await PostModel.findByIdAndRemove(id)
+
+    return result
+  }
+
   async list (ctx) {
     // define result
     let result
@@ -37,6 +44,21 @@ class Post {
 
     // send data into client
     ctx.body = status
+
+    next()
+  }
+
+  async remove (ctx, next) {
+    // define result
+    let result
+
+    const { id } = ctx.request.body
+
+    result = await this.deletePost(id)
+
+    ctx.body = {
+      result
+    }
 
     next()
   }
