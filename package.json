@@ -20,6 +20,7 @@
   "homepage": "https://github.com/erdemuslu/revo-cms#readme",
   "dependencies": {
     "bcrypt": "^3.0.5",
+    "cloudinary": "^1.14.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",

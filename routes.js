@@ -24,4 +24,7 @@ router.post('/post/save', checkToken, (ctx, next) => Post.save(ctx, next))
 router.put('/post/update', checkToken, (ctx, next) => Post.update(ctx, next))
 router.delete('/post/remove', checkToken, (ctx, next) => Post.remove(ctx, next))
 
+// cloudinary
+router.post('/cloudinary', (ctx, next) => Post.uploadPhoto(ctx, next))
+
 module.exports = router

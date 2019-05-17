@@ -68,3 +68,6 @@ dist
 # osx
 .DS_Store
 **/.DS_Store
+
+# config
+config.js
