@@ -86,38 +86,56 @@ class Auth {
   }
 
   async login (ctx, next) {
+    // define result
+    const result = { success: 0 }
+
     // get username
     const { email, password } = ctx.request.body
 
-    // find username
-    const user = await this.findUser(email)
+    // run validate func
+    const { emailCheck, passCheck } = await this.validate({ email, password })
+    console.log(emailCheck, passCheck)
 
-    // check user exist
-    if (user === null) {
-      ctx.body = {
-        msg: 'this email does not exist'
+    if (emailCheck && passCheck) {
+      // find username
+      const user = await this.findUser(email)
+
+      // check user exist
+      if (user === null) {
+        ctx.body = {
+          msg: 'this email does not exist'
+        }
+
+        return false
       }
 
-      return false
-    }
+      // check password
+      const checkPassword = await this.comparePass(password, user.password)
 
-    // check password
-    const checkPassword = await this.comparePass(password, user.password)
+      if (!checkPassword) {
+        ctx.body = {
+          msg: 'email or password invalid'
+        }
 
-    if (!checkPassword) {
-      ctx.body = {
-        msg: 'email or password invalid'
+        return false
       }
 
-      return false
-    }
+      // create token
+      result.token = await this.createToken({ email })
 
-    // create token
-    const token = await this.createToken({ email })
+      // set success
+      result.success = 1
 
-    ctx.body = {
-      success: 1,
-      token
+      // send data into client
+      ctx.body = result
+    } else {
+      result.props = {
+        email: emailCheck,
+        password: passCheck
+      }
+
+      // send data into client
+      ctx.body = result
     }
 
     next()
