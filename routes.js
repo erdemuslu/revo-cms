@@ -6,6 +6,7 @@ const checkToken = require('./middlewares/checkToken')
 // load controller
 const Main = require('./controllers/main')
 const Auth = require('./controllers/auth')
+const Post = require('./controllers/post')
 
 // init router
 const router = new Router()
@@ -16,5 +17,9 @@ router.get('/', checkToken, ctx => Main.hello(ctx))
 // user
 router.post('/user/register', (ctx, next) => Auth.register(ctx, next))
 router.post('/user/login', (ctx, next) => Auth.login(ctx, next))
+
+// post
+router.get('/post/list', checkToken, (ctx) => Post.list(ctx))
+router.post('/post/save', checkToken, (ctx, next) => Post.save(ctx, next))
 
 module.exports = router

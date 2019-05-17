@@ -6,7 +6,7 @@ const { sign } = require('jsonwebtoken')
 const { secret } = require('../config')
 
 // load mongoose models
-const User = require('../models/User')
+const UserModel = require('../models/User')
 
 class Auth {
   // encrypted password
@@ -18,7 +18,7 @@ class Auth {
 
   // save user into db
   async saveUser (newUser) {
-    const result = await User(newUser).save()
+    const result = await UserModel(newUser).save()
 
     return result
   }
@@ -32,7 +32,7 @@ class Auth {
 
   // search into db
   async findUser (email) {
-    const result = await User.findOne({ email: new RegExp(`^${email}$`, 'i') })
+    const result = await UserModel.findOne({ email: new RegExp(`^${email}$`, 'i') })
 
     return result
   }
@@ -94,7 +94,6 @@ class Auth {
 
     // run validate func
     const { emailCheck, passCheck } = await this.validate({ email, password })
-    console.log(emailCheck, passCheck)
 
     if (emailCheck && passCheck) {
       // find username

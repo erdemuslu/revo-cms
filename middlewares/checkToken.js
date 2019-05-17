@@ -11,7 +11,7 @@ async function verifyToken (token) {
 
 module.exports = async (ctx, next) => {
   // get token from client
-  const tokenFromClient = ctx.request.headers['x-access-token'] || ctx.request.body.token
+  const tokenFromClient = ctx.request.headers['x-access-token']
 
   try {
     await verifyToken(tokenFromClient)
