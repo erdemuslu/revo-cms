@@ -23,6 +23,13 @@ class Post {
     return result
   }
 
+  // delete post
+  async updatePost (id, obj) {
+    const result = await PostModel.findByIdAndUpdate(id, obj)
+
+    return result
+  }
+
   async list (ctx) {
     // define result
     let result
@@ -55,6 +62,23 @@ class Post {
     const { id } = ctx.request.body
 
     result = await this.deletePost(id)
+
+    ctx.body = {
+      result
+    }
+
+    next()
+  }
+
+  async update (ctx, next) {
+    // define result
+    let result
+
+    // get data from client
+    const { id, body } = ctx.request.body
+    console.log(id, body)
+
+    result = await this.updatePost(id, { body })
 
     ctx.body = {
       result
