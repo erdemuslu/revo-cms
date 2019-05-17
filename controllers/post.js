@@ -36,10 +36,7 @@ class Post {
   }
 
   // upload photo
-  async uploadPhoto (ctx, next) {
-    // define result
-    let result
-
+  async uploadPhoto () {
     // set config
     cloudinary.config({
       cloud_name: cloudName,
@@ -47,11 +44,9 @@ class Post {
       api_secret: apiSecret
     })
 
-    result = await cloudinary.uploader.upload('/Users/erdem/projects/revo-cms/public/assets/example.jpg')
+    const result = await cloudinary.uploader.upload('/Users/erdem/projects/revo-cms/public/assets/example.jpg')
 
-    ctx.body = result
-
-    next()
+    return result
   }
 
   async list (ctx) {
@@ -68,10 +63,13 @@ class Post {
     let status
 
     // get username and password
-    const { title, body, author } = ctx.request.body
+    const { title, headerBg, body, author } = ctx.request.body
+
+    // upload image to cloudinary
+    const { url } = await this.uploadPhoto(headerBg)
 
     // run mongoose model
-    status = await this.savePost({ title, body, author })
+    status = await this.savePost({ title, header: { url }, body, author })
 
     // send data into client
     ctx.body = status
