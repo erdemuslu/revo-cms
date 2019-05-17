@@ -1,9 +1,9 @@
 ![revo cms logo](https://i.ibb.co/tXkn6S6/logo.png)
 
-# revo cms
+# REVO CMS
 A basic cms to create your own blog
 
-## endpoints
+## Endpoints
 
 | TYPE   | PATH           | PARAMS             | DETAILS      |
 |--------|----------------|--------------------|--------------|
@@ -14,7 +14,7 @@ A basic cms to create your own blog
 | PUT    | /post/update   | id, body           | update post  |
 | DELETE | /post/remove   | id                 |  remove post |
 
-## before start
+## Before start
 
 Create config.js file into root path
 
