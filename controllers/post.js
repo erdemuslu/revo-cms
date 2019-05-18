@@ -36,7 +36,7 @@ class Post {
   }
 
   // upload photo
-  async uploadPhoto () {
+  async uploadPhoto (path) {
     // set config
     cloudinary.config({
       cloud_name: cloudName,
@@ -44,7 +44,7 @@ class Post {
       api_secret: apiSecret
     })
 
-    const result = await cloudinary.uploader.upload('/Users/erdem/projects/revo-cms/public/assets/example.jpg')
+    const result = await cloudinary.uploader.upload(path)
 
     return result
   }
@@ -69,7 +69,7 @@ class Post {
     const { url } = await this.uploadPhoto(headerBg)
 
     // run mongoose model
-    status = await this.savePost({ title, header: { url }, body, author })
+    status = await this.savePost({ title, header: { bg: { url } }, body, author })
 
     // send data into client
     ctx.body = status
@@ -98,7 +98,6 @@ class Post {
 
     // get data from client
     const { id, body } = ctx.request.body
-    console.log(id, body)
 
     result = await this.updatePost(id, { body })
 
