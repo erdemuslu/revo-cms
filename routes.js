@@ -12,7 +12,7 @@ const Post = require('./controllers/post')
 const router = new Router()
 
 // main
-router.get('/', checkToken, ctx => Main.hello(ctx))
+router.get('/', ctx => Main.hello(ctx))
 
 // user
 router.post('/user/register', (ctx, next) => Auth.register(ctx, next))

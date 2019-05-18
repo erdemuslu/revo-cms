@@ -15,8 +15,6 @@ deploy_production:
     - pwd
     - rm -rf node-modules/
     - npm install
-    - npm run build
-    - npm run prod
     - pm2 restart revo-cms
   only:
     - master
