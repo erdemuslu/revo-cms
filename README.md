@@ -1,7 +1,7 @@
 ![revo cms logo](https://i.ibb.co/tXkn6S6/logo.png)
 
 # Revo cms
-A basic cms to create your own blog
+A basic cms to create your own blog 
 
 ## Endpoints
 
