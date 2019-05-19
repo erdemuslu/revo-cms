@@ -7,9 +7,16 @@ const { cloudinary: { cloudName, apiKey, apiSecret } } = require('../config')
 const PostModel = require('../models/Post')
 
 class Post {
-  // save user into db
+  // get posts
   async getPost () {
     const result = await PostModel.paginate({}, { sort: { _id: -1 }, page: 1, limit: 10 })
+
+    return result
+  }
+
+  // get posts by author
+  async getPostByAuthor (id) {
+    const result = await PostModel.find({ 'author.id': id })
 
     return result
   }
@@ -58,18 +65,27 @@ class Post {
     ctx.body = result
   }
 
+  async listByAuthor (ctx) {
+    // define result
+    let result
+
+    result = await this.getPostByAuthor(ctx.params.id)
+
+    ctx.body = result
+  }
+
   async save (ctx, next) {
     // define status
     let status
 
     // get username and password
-    const { title, headerBg, body, author } = ctx.request.body
+    const { title, headerBg, body, authorName, authorId } = ctx.request.body
 
     // upload image to cloudinary
     const { url } = await this.uploadPhoto(headerBg)
 
     // run mongoose model
-    status = await this.savePost({ title, header: { bg: { url } }, body, author })
+    status = await this.savePost({ title, header: { bg: { url } }, body, author: { id: authorId, name: authorName } })
 
     // send data into client
     ctx.body = status

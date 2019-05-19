@@ -20,6 +20,7 @@ router.post('/user/login', (ctx, next) => Auth.login(ctx, next))
 
 // post
 router.get('/post/list', checkToken, (ctx) => Post.list(ctx))
+router.get('/post/list/:id', checkToken, (ctx) => Post.listByAuthor(ctx))
 router.post('/post/save', checkToken, (ctx, next) => Post.save(ctx, next))
 router.put('/post/update', checkToken, (ctx, next) => Post.update(ctx, next))
 router.delete('/post/remove', checkToken, (ctx, next) => Post.remove(ctx, next))

@@ -119,6 +119,9 @@ class Auth {
         return false
       }
 
+      // send id
+      result.id = user._id
+
       // create token
       result.token = await this.createToken({ email })
 
