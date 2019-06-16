@@ -2,9 +2,9 @@ module.exports = {
   apps: [
     {
       name: 'revo-cms-dev',
-      script: 'server/index.js',
+      script: 'bin/www',
       watch: true,
-      env: {
+      env_production: {
         'PORT': 9002,
         'NODE_ENV': 'development'
       }

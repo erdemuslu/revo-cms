@@ -4,20 +4,26 @@ const { Schema } = mongoose
 
 mongoose.set('useCreateIndex', true)
 
-const UserSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true
+const UserSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+      index: { unique: true }
+    },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+      index: { unique: true },
+      minlength: 6
+    }
   },
-  password: {
-    type: String,
-    minlength: 6
-  },
-  date: {
-    type: Date,
-    default: Date.now
+  {
+    timestamps: true
   }
-})
+)
 
 module.exports = mongoose.model('user', UserSchema)
