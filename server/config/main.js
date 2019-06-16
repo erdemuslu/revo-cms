@@ -18,5 +18,11 @@ module.exports = {
     database: {
       dsn: env.parsed.DEVELOPMENT_DB_DSN
     }
+  },
+  secret: env.parsed.SECRET_KEY,
+  cloudinary: {
+    cloudName: env.parsed.CLOUDINARY_NAME,
+    apiKey: env.parsed.CLOUDINARY_APIKEY,
+    apiSecret: env.parsed.CLOUDINARY_APISECRET
   }
 }
