@@ -54,6 +54,16 @@ class Auth {
     return result
   }
 
+  // check
+  async check (ctx, next) {
+    // send data into client
+    ctx.body = {
+      status: 1
+    }
+
+    await next()
+  }
+
   // register user
   async register (ctx, next) {
     // define status
@@ -82,7 +92,7 @@ class Auth {
       status
     }
 
-    next()
+    await next()
   }
 
   async login (ctx, next) {
@@ -140,7 +150,7 @@ class Auth {
       ctx.body = result
     }
 
-    next()
+    await next()
   }
 }
 

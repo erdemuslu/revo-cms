@@ -90,7 +90,7 @@ class Post {
     // send data into client
     ctx.body = status
 
-    next()
+    await next()
   }
 
   async remove (ctx, next) {
@@ -105,7 +105,7 @@ class Post {
       result
     }
 
-    next()
+    await next()
   }
 
   async update (ctx, next) {
@@ -121,7 +121,7 @@ class Post {
       result
     }
 
-    next()
+    await next()
   }
 }
 

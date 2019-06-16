@@ -14,6 +14,9 @@ const router = new Router()
 // main
 router.get('/', ctx => Main.hello(ctx))
 
+// auth
+router.post('/auth/check', (ctx, next) => Auth.check(ctx, next))
+
 // user
 router.post('/user/register', (ctx, next) => Auth.register(ctx, next))
 router.post('/user/login', (ctx, next) => Auth.login(ctx, next))
