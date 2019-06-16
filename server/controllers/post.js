@@ -1,7 +1,7 @@
 const cloudinary = require('cloudinary').v2
 
 // load config
-const { cloudinary: { cloudName, apiKey, apiSecret } } = require('../config')
+const { cloudinary: { cloudName, apiKey, apiSecret } } = require('../../config')
 
 // load mongoose models
 const PostModel = require('../models/Post')

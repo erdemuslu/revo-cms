@@ -1,0 +1,12 @@
+/** dependincies modules **/
+const config = require('../server/config/main')[process.env.NODE_ENV]
+const db = require('../server/lib/db')
+const app = require('../server/index')
+
+/* connect to mongodb */
+db.connect(config.database.dsn)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.log(err))
+
+/* run server */
+app()
