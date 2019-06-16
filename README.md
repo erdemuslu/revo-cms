@@ -16,26 +16,14 @@ A basic cms to create your own blog
 
 ## Before start
 
-Create config.js file into root path
+Create .env file into root path
 
 ```javascript
-const config = {
-  // mlab config
-  db: {
-    port: ,
-    name: ,
-    username: ,
-    password:
-  },
-  // cloudinary config
-  cloudinary: {
-    cloudName: ,
-    apiKey: ,
-    apiSecret: 
-  },
-  // your secret key
-  secret: 
-}
-
-module.exports = config
+SECRET_KEY=
+PRODUCTION_DB_DSN=
+STAGING_DB_DSN=
+DEVELOPMENT_DB_DSN=
+CLOUDINARY_NAME=
+CLOUDINARY_APIKEY=
+CLOUDINARY_APISECRET=
 ```
