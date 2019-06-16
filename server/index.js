@@ -23,7 +23,7 @@ module.exports = () => {
   app.use(BodyParser())
 
   // define port
-  const { PORT = 3000, NODE_ENV = 'development' } = process.env
+  const { PORT, NODE_ENV } = process.env
 
   // init router setup
   app.use(router.routes())
