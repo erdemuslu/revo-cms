@@ -4,7 +4,7 @@ const limit = require('koa-limit')
 const cors = require('koa-cors')
 
 // load db
-const db = require('./helper/db')
+const db = require('./lib/db')
 
 // load routes
 const router = require('./routes')
