@@ -1,11 +1,7 @@
 class Main {
   // test method
-  async hello (ctx, next) {
-    ctx.body = {
-      message: 'Hello api'
-    }
-
-    await next()
+  async hello (ctx) {
+    return ctx.render('index')
   }
 }
 

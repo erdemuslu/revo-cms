@@ -4,7 +4,7 @@ const Router = require('koa-router')
 const checkToken = require('./middlewares/checkToken')
 
 // load controller
-const mainCtrl = require('./controllers/mainCtrl')
+const { hello } = require('./controllers/mainCtrl')
 const userCtrl = require('./controllers/userCtrl')
 const postCtrl = require('./controllers/postCtrl')
 
@@ -12,7 +12,7 @@ const postCtrl = require('./controllers/postCtrl')
 const router = new Router()
 
 // main
-router.get('/', (ctx, next) => mainCtrl.hello(ctx, next))
+router.get('/', hello)
 
 // auth
 router.post('/auth/check', (ctx, next) => userCtrl.check(ctx, next))

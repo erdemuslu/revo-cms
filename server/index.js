@@ -1,12 +1,19 @@
 const Koa = require('koa')
 const BodyParser = require('koa-bodyparser')
+const serve = require('koa-static')
 const limit = require('koa-limit')
 const cors = require('koa-cors')
 
 // load routes
 const router = require('./routes')
 
+// load libs
+const renderPug = require('./lib/renderPug')
+
 module.exports = () => {
+  // get port & env
+  const { PORT, NODE_ENV } = process.env
+
   // init app
   const app = new Koa()
 
@@ -16,14 +23,17 @@ module.exports = () => {
     interval: 1000 * 60 * 60
   }))
 
+  // init pug
+  renderPug(app)
+
+  // init static files
+  app.use(serve(`./dashboard`))
+
   // cors
   app.use(cors())
 
   // Use the bodyparser middlware
   app.use(BodyParser())
-
-  // define port
-  const { PORT, NODE_ENV } = process.env
 
   // init router setup
   app.use(router.routes())
