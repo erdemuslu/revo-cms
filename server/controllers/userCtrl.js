@@ -6,7 +6,7 @@ const { sign } = require('jsonwebtoken')
 const { secret } = require('../config')
 
 // load mongoose models
-const UserModel = require('../models/User')
+const UserModel = require('../models/UserModel')
 
 class Auth {
   // encrypted password
