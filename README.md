@@ -19,11 +19,8 @@ A basic cms to create your own blog
 Create .env file into root path
 
 ```javascript
-SECRET_KEY=
-PRODUCTION_DB_DSN=
-STAGING_DB_DSN=
-DEVELOPMENT_DB_DSN=
-CLOUDINARY_NAME=
-CLOUDINARY_APIKEY=
-CLOUDINARY_APISECRET=
+SECRET_KEY=VERY_SECRET_KEY
+PRODUCTION_DB_DSN=production_db_url
+STAGING_DB_DSN=staging_db_url
+DEVELOPMENT_DB_DSN=mongodb://localhost:27017/revo
 ```
