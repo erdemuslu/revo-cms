@@ -1,8 +1,3 @@
-const cloudinary = require('cloudinary').v2
-
-// load config
-const { cloudinary: { cloudName, apiKey, apiSecret } } = require('../config')
-
 // load mongoose models
 const PostModel = require('../models/PostModel')
 
@@ -42,20 +37,6 @@ class Post {
     return result
   }
 
-  // upload photo
-  async uploadPhoto (path) {
-    // set config
-    cloudinary.config({
-      cloud_name: cloudName,
-      api_key: apiKey,
-      api_secret: apiSecret
-    })
-
-    const result = await cloudinary.uploader.upload(path)
-
-    return result
-  }
-
   async list (ctx) {
     // define result
     let result
@@ -79,13 +60,10 @@ class Post {
     let status
 
     // get username and password
-    const { title, headerBg, body, authorName, authorId } = ctx.request.body
-
-    // upload image to cloudinary
-    const { url } = await this.uploadPhoto(headerBg)
+    const { title, body, authorName, authorId } = ctx.request.body
 
     // run mongoose model
-    status = await this.savePost({ title, header: { bg: { url } }, body, author: { id: authorId, name: authorName } })
+    status = await this.savePost({ title, body, author: { id: authorId, name: authorName } })
 
     // send data into client
     ctx.body = status
