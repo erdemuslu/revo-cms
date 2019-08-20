@@ -1,5 +1,5 @@
 /** dependincies modules **/
-const config = require('../server/config/main')[process.env.NODE_ENV]
+const config = require('../server/config')[process.env.NODE_ENV]
 const db = require('../server/lib/db')
 const app = require('../server/index')
 

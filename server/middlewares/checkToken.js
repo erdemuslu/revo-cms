@@ -1,7 +1,7 @@
 const { verify } = require('jsonwebtoken')
 
 // load secret
-const { secret } = require('../../config')
+const { secret } = require('../config')
 
 async function verifyToken (token) {
   const result = await verify(token, secret)

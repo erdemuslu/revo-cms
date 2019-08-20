@@ -3,7 +3,7 @@ const { isEmail } = require('validator')
 const { sign } = require('jsonwebtoken')
 
 // load secret key
-const { secret } = require('../../config')
+const { secret } = require('../config')
 
 // load mongoose models
 const UserModel = require('../models/User')
