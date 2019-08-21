@@ -4,8 +4,11 @@
   "description": "A basic cms to create your own blog",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start dev.ecosystem.config.js --env development",
-    "prod": "pm2 start ecosystem.config.js --env production"
+    "client:watch": "parcel watch dashboard/script/index.js -d dashboard/output --no-source-maps",
+    "client:build": "parcel build dashboard/script/index.js -d dashboard/output --no-source-maps",
+    "client:clean": "rm -rf dashboard/output",
+    "server:dev": "pm2 start dev.ecosystem.config.js --env development",
+    "server:prod": "pm2 start ecosystem.config.js --env production"
   },
   "repository": {
     "type": "git",
