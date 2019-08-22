@@ -4,8 +4,8 @@
   "description": "A basic cms to create your own blog",
   "main": "index.js",
   "scripts": {
-    "client:watch": "parcel watch dashboard/script/index.js -d dashboard/output --no-source-maps",
-    "client:build": "parcel build dashboard/script/index.js -d dashboard/output --no-source-maps",
+    "client:watch": "parcel watch dashboard/app/main.js -d dashboard/output --no-source-maps",
+    "client:build": "parcel build dashboard/app/main.js -d dashboard/output --no-source-maps",
     "client:clean": "rm -rf dashboard/output",
     "server:dev": "pm2 start dev.ecosystem.config.js --env development",
     "server:prod": "pm2 start ecosystem.config.js --env production"
@@ -36,15 +36,18 @@
     "mongoose": "^5.5.8",
     "mongoose-paginate": "^5.0.3",
     "parcel-bundler": "^1.12.3",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "validator": "^10.11.0"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-node": "^9.0.1",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.2.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "sass": "^1.22.10"
   }
 }

@@ -1,8 +1,8 @@
 class Main {
-  // test method
-  async hello (ctx) {
-    return ctx.render('index')
+  // home route
+  async home(ctx) {
+    return ctx.render('index');
   }
 }
 
-module.exports = new Main()
+module.exports = new Main();

@@ -1,28 +1,28 @@
-const { verify } = require('jsonwebtoken')
+const { verify } = require('jsonwebtoken');
 
 // load secret
-const { secret } = require('../config')
+const { secret } = require('../config');
 
-async function verifyToken (token) {
-  const result = await verify(token, secret)
+async function verifyToken(token) {
+  const result = await verify(token, secret);
 
-  return result
+  return result;
 }
 
 module.exports = async (ctx, next) => {
   // get token from client
-  const tokenFromClient = ctx.request.headers['x-access-token']
+  const tokenFromClient = ctx.request.headers['x-access-token'];
 
   try {
-    await verifyToken(tokenFromClient)
+    await verifyToken(tokenFromClient);
 
-    return next()
+    return next();
   } catch (err) {
     ctx.body = {
       status: 0,
-      msg: err.message
-    }
+      msg: err.message,
+    };
 
-    return false
+    return false;
   }
-}
+};
