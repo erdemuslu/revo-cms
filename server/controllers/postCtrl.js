@@ -1,106 +1,93 @@
 // load mongoose models
-const PostModel = require('../models/PostModel')
+const PostModel = require('../models/PostModel');
 
 class Post {
   // get posts
-  async getPost () {
-    const result = await PostModel.paginate({}, { sort: { _id: -1 }, page: 1, limit: 10 })
+  async getPost() {
+    const result = await PostModel.paginate({}, { sort: { _id: -1 }, page: 1, limit: 10 });
 
-    return result
+    return result;
   }
 
   // get posts by author
-  async getPostByAuthor (id) {
-    const result = await PostModel.find({ 'author.id': id })
+  async getPostByAuthor(id) {
+    const result = await PostModel.find({ 'author.id': id });
 
-    return result
+    return result;
   }
 
   // save user into db
-  async savePost (newPost) {
-    const result = await PostModel(newPost).save()
+  async savePost(newPost) {
+    const result = await PostModel(newPost).save();
 
-    return result
+    return result;
   }
 
   // delete post
-  async deletePost (id) {
-    const result = await PostModel.findByIdAndRemove(id)
+  async deletePost(id) {
+    const result = await PostModel.findByIdAndRemove(id);
 
-    return result
+    return result;
   }
 
   // update post
-  async updatePost (id, obj) {
-    const result = await PostModel.findByIdAndUpdate(id, obj)
+  async updatePost(id, obj) {
+    const result = await PostModel.findByIdAndUpdate(id, obj);
 
-    return result
+    return result;
   }
 
-  async list (ctx) {
-    // define result
-    let result
+  async list(ctx) {
+    const result = await this.getPost();
 
-    result = await this.getPost()
-
-    ctx.body = result
+    ctx.body = result;
   }
 
-  async listByAuthor (ctx) {
-    // define result
-    let result
+  async listByAuthor(ctx) {
+    const result = await this.getPostByAuthor(ctx.params.id);
 
-    result = await this.getPostByAuthor(ctx.params.id)
-
-    ctx.body = result
+    ctx.body = result;
   }
 
-  async save (ctx, next) {
-    // define status
-    let status
-
+  async save(ctx, next) {
     // get username and password
-    const { title, body, authorName, authorId } = ctx.request.body
+    const {
+      body, authorName,
+    } = ctx.request.body;
 
     // run mongoose model
-    status = await this.savePost({ title, body, author: { id: authorId, name: authorName } })
+    const status = await this.savePost({ body, author: { name: authorName } });
 
     // send data into client
-    ctx.body = status
+    ctx.body = status;
 
-    await next()
+    await next();
   }
 
-  async remove (ctx, next) {
-    // define result
-    let result
+  async remove(ctx, next) {
+    const { id } = ctx.request.body;
 
-    const { id } = ctx.request.body
-
-    result = await this.deletePost(id)
+    const result = await this.deletePost(id);
 
     ctx.body = {
-      result
-    }
+      result,
+    };
 
-    await next()
+    await next();
   }
 
-  async update (ctx, next) {
-    // define result
-    let result
-
+  async update(ctx, next) {
     // get data from client
-    const { id, body } = ctx.request.body
+    const { id, body } = ctx.request.body;
 
-    result = await this.updatePost(id, { body })
+    const result = await this.updatePost(id, { body });
 
     ctx.body = {
-      result
-    }
+      result,
+    };
 
-    await next()
+    await next();
   }
 }
 
-module.exports = new Post()
+module.exports = new Post();

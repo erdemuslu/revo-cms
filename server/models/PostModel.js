@@ -1,33 +1,25 @@
-const mongoose = require('mongoose')
-const mongoosePaginate = require('mongoose-paginate')
+const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 
-const { Schema } = mongoose
+const { Schema } = mongoose;
 
-mongoose.set('useCreateIndex', true)
+mongoose.set('useCreateIndex', true);
 
 const PostSchema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  header: {
-    type: Object,
-    required: true
-  },
   body: {
     type: String,
-    required: true
+    required: true,
   },
   author: {
     type: Object,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
-    default: Date.now
-  }
-})
+    default: Date.now,
+  },
+});
 
-PostSchema.plugin(mongoosePaginate)
+PostSchema.plugin(mongoosePaginate);
 
-module.exports = mongoose.model('post', PostSchema)
+module.exports = mongoose.model('post', PostSchema);
