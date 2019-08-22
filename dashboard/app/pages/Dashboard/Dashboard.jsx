@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 // import axios from 'axios';
 
-import PostEditor from '../../components/PostEditor/PostEditor';
+import Editor from '../../components/Editor/Editor';
+import Posts from '../../components/Posts/Posts';
 
 const Dashboard = () => {
   const [name] = useState(sessionStorage.getItem('email') || '');
@@ -13,7 +14,8 @@ const Dashboard = () => {
         { ' ' }
         { name }
       </h4>
-      <PostEditor />
+      <Editor />
+      <Posts />
     </div>
   );
 };

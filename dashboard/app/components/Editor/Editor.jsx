@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
 import SimpleMDE from 'react-simplemde-editor';
 import showdown from 'showdown';
-import 'easymde/dist/easymde.min.css';
+import axios from 'axios';
 
-const PostEditor = () => {
+const Editor = () => {
   const [editorState, setEditorState] = useState('...');
 
   const handleSave = () => {
     const converter = new showdown.Converter();
     const html = converter.makeHtml(editorState);
-    console.log(html);
+
+    axios.post('/post/save', {
+      body: html,
+      authorName: sessionStorage.getItem('email'),
+    }, {
+      headers: {
+        'x-access-token': sessionStorage.getItem('token'),
+      },
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -29,4 +39,4 @@ const PostEditor = () => {
   );
 };
 
-export default PostEditor;
+export default Editor;
