@@ -8,11 +8,11 @@ const Dashboard = () => {
 
   return (
     <div role="main">
-      <h1>
+      <h4>
         Welcome
         { ' ' }
         { name }
-      </h1>
+      </h4>
       <PostEditor />
     </div>
   );

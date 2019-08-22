@@ -20,7 +20,7 @@ module.exports = () => {
   // request limit
   app.use(limit({
     limit: 1000,
-    interval: 1000 * 60 * 60 * 8,
+    interval: 1000 * 60 * 60,
   }));
 
   // init pug

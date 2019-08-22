@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
-import { Editor, EditorState } from 'draft-js';
+import SimpleMDE from 'react-simplemde-editor';
+import showdown from 'showdown';
+import 'easymde/dist/easymde.min.css';
 
 const PostEditor = () => {
-  const [editorState, setEditorState] = useState(
-    EditorState.createEmpty(),
-  );
+  const [editorState, setEditorState] = useState('...');
+
+  const handleSave = () => {
+    const converter = new showdown.Converter();
+    const html = converter.makeHtml(editorState);
+    console.log(html);
+  };
 
   return (
     <div role="main" className="editor">
-      <Editor
-        editorState={editorState}
-        onChange={setEditorState}
+      <SimpleMDE
+        onChange={(val) => setEditorState(val)}
+        value={editorState}
       />
+      <button
+        type="button"
+        onClick={handleSave}
+        className="save-btn"
+      >
+        Save
+      </button>
     </div>
   );
 };

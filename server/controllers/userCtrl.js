@@ -48,7 +48,7 @@ class UserCtrl {
   async createToken(payload) {
     // create token
     const result = await sign(payload, secret, {
-      expiresIn: 720, // 12 hours
+      expiresIn: '8h',
     });
 
     return result;
