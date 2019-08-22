@@ -39,10 +39,14 @@ const Login = () => {
     <div role="main" className="login">
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
+        <br />
         <input type="email" name="email" id="email" onKeyUp={handleInput} />
         <br />
+        <br />
         <label htmlFor="password">Password</label>
+        <br />
         <input type="password" name="password" id="password" onKeyUp={handleInput} />
+        <br />
         <br />
         <button type="submit">Log in</button>
       </form>

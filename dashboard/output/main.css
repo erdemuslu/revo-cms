@@ -44,3 +44,19 @@ button.save-btn {
 .posts {
   margin-top: 2em;
 }
+
+code {
+  display: block;
+  background-color: #3a465d;
+  color: #feffff;
+  width: 30em;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+.list {
+  margin-top: 2em;
+}
+.list-item {
+  margin-top: 1em;
+}

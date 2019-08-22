@@ -32472,19 +32472,19 @@ var Login = function Login() {
     onSubmit: handleSubmit
   }, _react.default.createElement("label", {
     htmlFor: "email"
-  }, "Email"), _react.default.createElement("input", {
+  }, "Email"), _react.default.createElement("br", null), _react.default.createElement("input", {
     type: "email",
     name: "email",
     id: "email",
     onKeyUp: handleInput
-  }), _react.default.createElement("br", null), _react.default.createElement("label", {
+  }), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("label", {
     htmlFor: "password"
-  }, "Password"), _react.default.createElement("input", {
+  }, "Password"), _react.default.createElement("br", null), _react.default.createElement("input", {
     type: "password",
     name: "password",
     id: "password",
     onKeyUp: handleInput
-  }), _react.default.createElement("br", null), _react.default.createElement("button", {
+  }), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("button", {
     type: "submit"
   }, "Log in")));
 };
@@ -57354,6 +57354,7 @@ var Editor = function Editor() {
   var handleSave = function handleSave() {
     var converter = new _showdown.default.Converter();
     var html = converter.makeHtml(editorState);
+    console.log(html);
 
     _axios.default.post('/post/save', {
       body: html,
@@ -57416,10 +57417,34 @@ var Posts = function Posts() {
       posts = _useState2[0],
       setPosts = _useState2[1];
 
+  (0, _react.useEffect)(function () {
+    _axios.default.get('/post/list', {
+      headers: {
+        'x-access-token': sessionStorage.getItem('token')
+      }
+    }).then(function (_ref) {
+      var docs = _ref.data.docs;
+      console.log(docs);
+      setPosts(docs);
+    }).catch(function (err) {
+      return console.log(err);
+    });
+  }, []);
   return _react.default.createElement("div", {
     role: "main",
     className: "posts"
-  }, "posts");
+  }, _react.default.createElement("h1", null, "Posts"), _react.default.createElement("div", {
+    className: "list"
+  }, posts ? posts.map(function (item, index) {
+    return _react.default.createElement("div", {
+      className: "list-item",
+      role: "main",
+      key: index.toString(),
+      dangerouslySetInnerHTML: {
+        __html: item.body
+      }
+    });
+  }) : null));
 };
 
 var _default = Posts;

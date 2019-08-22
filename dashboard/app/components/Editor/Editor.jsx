@@ -10,6 +10,8 @@ const Editor = () => {
     const converter = new showdown.Converter();
     const html = converter.makeHtml(editorState);
 
+    console.log(html);
+
     axios.post('/post/save', {
       body: html,
       authorName: sessionStorage.getItem('email'),
