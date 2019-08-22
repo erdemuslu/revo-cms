@@ -1,0 +1,32 @@
+.form {
+  $this: &;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+
+  &-row {
+    &.is-cta {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
+  }
+
+  label {
+    font-size: .74em;
+    margin-bottom: .5em;
+  }
+
+  input {
+    border: 1px solid $lightgray;
+  }
+
+  button {
+    height: 2.5em;
+    background-color: lightsalmon;
+    color: #fff;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-radius: 4px;
+  }
+}

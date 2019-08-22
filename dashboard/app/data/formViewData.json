@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "type": "text",
+      "name": "email",
+      "placeholder": "example@example.com",
+      "label": "Email"
+    },
+    {
+      "type": "password",
+      "name": "password",
+      "placeholder": "******",
+      "label": "Password"
+    }
+  ]
+}

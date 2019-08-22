@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6em;
+  margin-bottom: 4em;
+  border-bottom: 1px solid $lightgray;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3em;
+    height: 3em;
+    border-radius: 2px;
+    background-color: $black;
+    color: #fff;
+    font-size: .8em;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

@@ -30682,7 +30682,7 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"style/index.sass":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"style/index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -32400,7 +32400,21 @@ module.exports.default = axios;
 
 },{"./utils":"../../node_modules/axios/lib/utils.js","./helpers/bind":"../../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../../node_modules/axios/lib/helpers/spread.js"}],"../../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../../node_modules/axios/lib/axios.js"}],"pages/Login/Login.jsx":[function(require,module,exports) {
+},{"./lib/axios":"../../node_modules/axios/lib/axios.js"}],"data/formViewData.json":[function(require,module,exports) {
+module.exports = {
+  "data": [{
+    "type": "text",
+    "name": "email",
+    "placeholder": "example@example.com",
+    "label": "Email"
+  }, {
+    "type": "password",
+    "name": "password",
+    "placeholder": "******",
+    "label": "Password"
+  }]
+};
+},{}],"pages/Login/Login.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32411,6 +32425,8 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
+
+var _formViewData = _interopRequireDefault(require("../../data/formViewData.json"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32469,29 +32485,33 @@ var Login = function Login() {
     role: "main",
     className: "login"
   }, _react.default.createElement("form", {
+    className: "form",
     onSubmit: handleSubmit
-  }, _react.default.createElement("label", {
-    htmlFor: "email"
-  }, "Email"), _react.default.createElement("br", null), _react.default.createElement("input", {
-    type: "email",
-    name: "email",
-    id: "email",
-    onKeyUp: handleInput
-  }), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("label", {
-    htmlFor: "password"
-  }, "Password"), _react.default.createElement("br", null), _react.default.createElement("input", {
-    type: "password",
-    name: "password",
-    id: "password",
-    onKeyUp: handleInput
-  }), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("button", {
+  }, _formViewData.default.data.length > 0 ? _formViewData.default.data.map(function (item, index) {
+    return _react.default.createElement("div", {
+      className: "form-row",
+      role: "grid",
+      key: index.toString()
+    }, _react.default.createElement("label", {
+      htmlFor: item.name
+    }, item.label), _react.default.createElement("input", {
+      type: item.type,
+      name: item.name,
+      id: item.name,
+      placeholder: item.placeholder,
+      onKeyUp: handleInput
+    }));
+  }) : null, _react.default.createElement("div", {
+    className: "form-row is-cta",
+    role: "grid"
+  }, _react.default.createElement("button", {
     type: "submit"
-  }, "Log in")));
+  }, "Sign up"))));
 };
 
 var _default = Login;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"../../node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","../../data/formViewData.json":"data/formViewData.json"}],"../../node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -57547,14 +57567,14 @@ var _reactDom = require("react-dom");
 
 require("easymde/dist/easymde.min.css");
 
-require("./style/index.sass");
+require("./style/index.scss");
 
 var _App = _interopRequireDefault(require("./App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _reactDom.render)(_react.default.createElement(_App.default, null), document.getElementById('app'));
-},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","easymde/dist/easymde.min.css":"../../node_modules/easymde/dist/easymde.min.css","./style/index.sass":"style/index.sass","./App":"App.jsx"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","easymde/dist/easymde.min.css":"../../node_modules/easymde/dist/easymde.min.css","./style/index.scss":"style/index.scss","./App":"App.jsx"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -57582,7 +57602,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52041" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59269" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import formViewData from '../../data/formViewData.json';
+
 const Login = () => {
   // define state for form elements
   const [email, setEmail] = useState('');
@@ -37,18 +39,29 @@ const Login = () => {
 
   return (
     <div role="main" className="login">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <br />
-        <input type="email" name="email" id="email" onKeyUp={handleInput} />
-        <br />
-        <br />
-        <label htmlFor="password">Password</label>
-        <br />
-        <input type="password" name="password" id="password" onKeyUp={handleInput} />
-        <br />
-        <br />
-        <button type="submit">Log in</button>
+      <form className="form" onSubmit={handleSubmit}>
+        {
+          formViewData.data.length > 0
+            ? formViewData.data.map((item, index) => (
+              <div className="form-row" role="grid" key={index.toString()}>
+                <label htmlFor={item.name}>{item.label}</label>
+                <input
+                  type={item.type}
+                  name={item.name}
+                  id={item.name}
+                  placeholder={item.placeholder}
+                  onKeyUp={handleInput}
+                />
+              </div>
+            )) : null
+        }
+        <div className="form-row is-cta" role="grid">
+          <button
+            type="submit"
+          >
+            Sign up
+          </button>
+        </div>
       </form>
     </div>
   );
