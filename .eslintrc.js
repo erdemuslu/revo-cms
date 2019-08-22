@@ -24,6 +24,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    "jsx-a11y/label-has-associated-control": 0,
     "class-methods-use-this": 0,
     "no-underscore-dangle": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

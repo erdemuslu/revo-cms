@@ -102,8 +102,6 @@ class UserCtrl {
     // get username
     const { email, password } = ctx.request.body;
 
-    console.log(email, password);
-
     // run validate func
     const { emailCheck, passCheck } = await this.validate({ email, password });
 
@@ -118,7 +116,6 @@ class UserCtrl {
 
       return false;
     }
-
 
     // find username
     const user = await this.findUser(email);
@@ -142,9 +139,6 @@ class UserCtrl {
 
       return false;
     }
-
-    // send id
-    result.id = user._id;
 
     // create token
     result.token = await this.createToken({ email });

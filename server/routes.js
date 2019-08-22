@@ -15,7 +15,7 @@ const router = new Router();
 router.get('/', mainCtrl.home);
 
 // auth
-router.post('/auth/check', checkToken, (ctx, next) => userCtrl.check(ctx, next));
+router.get('/auth/check', checkToken, (ctx, next) => userCtrl.check(ctx, next));
 
 // user
 router.post('/user/register', (ctx, next) => userCtrl.register(ctx, next));
