@@ -1,0 +1,39 @@
+// variables
+$sidebar-background-color: #f4f5f4;
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 28%;
+  height: 100%;
+  padding: 2em;
+  background-color: $sidebar-background-color;
+
+  &-header {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__profile {
+    display: flex;
+    flex-grow: 1;
+    margin-left: 1em;
+    padding-top: .25em;
+    padding-bottom: .25em;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    
+    h4 {
+      margin-bottom: .25em;
+      font-size: .875em;
+      font-weight: 300;
+    }
+
+    h5 {
+      font-weight: 300;
+      opacity: .5;
+    }
+  }
+}

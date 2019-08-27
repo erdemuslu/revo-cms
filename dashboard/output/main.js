@@ -32511,7 +32511,57 @@ var Login = function Login() {
 
 var _default = Login;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","../../data/formViewData.json":"data/formViewData.json"}],"../../node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","../../data/formViewData.json":"data/formViewData.json"}],"components/Logo/Logo.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Logo = function Logo() {
+  return _react.default.createElement("div", {
+    role: "main",
+    className: "logo"
+  }, "RC");
+};
+
+var _default = Logo;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/Sidebar/Sidebar.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Logo = _interopRequireDefault(require("../Logo/Logo"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// load components
+var Sidebar = function Sidebar() {
+  console.log('sidebar');
+  return _react.default.createElement("div", {
+    role: "main",
+    className: "sidebar"
+  }, _react.default.createElement("div", {
+    className: "sidebar-header"
+  }, _react.default.createElement(_Logo.default, null), _react.default.createElement("div", {
+    className: "sidebar__profile"
+  }, _react.default.createElement("h4", null, "usluerdem@yandex.com"), _react.default.createElement("h5", null, "admin"))));
+};
+
+var _default = Sidebar;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","../Logo/Logo":"components/Logo/Logo.jsx"}],"../../node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -57479,6 +57529,8 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _Sidebar = _interopRequireDefault(require("../../components/Sidebar/Sidebar"));
+
 var _Editor = _interopRequireDefault(require("../../components/Editor/Editor"));
 
 var _Posts = _interopRequireDefault(require("../../components/Posts/Posts"));
@@ -57501,13 +57553,17 @@ var Dashboard = function Dashboard() {
       name = _useState2[0];
 
   return _react.default.createElement("div", {
+    role: "main",
+    className: "dashboard"
+  }, _react.default.createElement(_Sidebar.default, null), _react.default.createElement("div", {
+    className: "dashboard-main",
     role: "main"
-  }, _react.default.createElement("h4", null, "Welcome", ' ', name), _react.default.createElement(_Editor.default, null), _react.default.createElement(_Posts.default, null));
+  }, _react.default.createElement("h4", null, "Welcome", ' ', name), _react.default.createElement(_Editor.default, null), _react.default.createElement(_Posts.default, null)));
 };
 
 var _default = Dashboard;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","../../components/Editor/Editor":"components/Editor/Editor.jsx","../../components/Posts/Posts":"components/Posts/Posts.jsx"}],"App.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../components/Sidebar/Sidebar":"components/Sidebar/Sidebar.jsx","../../components/Editor/Editor":"components/Editor/Editor.jsx","../../components/Posts/Posts":"components/Posts/Posts.jsx"}],"App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
