@@ -15,6 +15,17 @@ const Sidebar = () => {
           <h5>admin</h5>
         </div>
       </div>
+      <div className="sidebar-content">
+        <h4>POSTS</h4>
+        <div className="list">
+          <div className="list-item">
+            Post title
+          </div>
+          <div className="list-item">
+            Post title
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

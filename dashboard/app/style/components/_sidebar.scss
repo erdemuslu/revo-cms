@@ -36,4 +36,32 @@ $sidebar-background-color: #f4f5f4;
       opacity: .5;
     }
   }
+
+  &-content {
+    margin-top: 4em;
+
+    h4 {
+      display: inline-block;
+      font-size: 1em;
+      border-bottom: 1px solid lightgray;
+      margin-bottom: 1em;
+    }
+
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+
+      &-item {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-bottom: .5em;
+        }
+      }
+    }
+  }
 }

@@ -64,6 +64,7 @@ typings/
 .cache
 build
 dist
+dashboard/output
 
 # osx
 .DS_Store
