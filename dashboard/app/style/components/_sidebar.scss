@@ -40,11 +40,27 @@ $sidebar-background-color: #f4f5f4;
   &-content {
     margin-top: 4em;
 
-    h4 {
-      display: inline-block;
-      font-size: 1em;
-      border-bottom: 1px solid lightgray;
-      margin-bottom: 1em;
+    &__title {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 2em;
+
+      span {
+        width: 1em;
+        height: 1em;
+        margin-right: .25em;
+
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      h4 {
+        display: inline-block;
+        font-size: .75em;
+      }
     }
 
     .list {
@@ -53,15 +69,37 @@ $sidebar-background-color: #f4f5f4;
 
       &-item {
         width: 100%;
+        font-size: .875em;
+        opacity: .8;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         cursor: pointer;
 
         &:not(:last-child) {
-          margin-bottom: .5em;
+          margin-bottom: .75em;
         }
       }
+    }
+  }
+
+  &-footer {
+    position: absolute;
+    bottom: 2em;
+    left: 2em;
+    width: 100%;
+
+    button {
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+      background-color: #474973;
+      color: #fff;
+      font-size: 1.5em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
   }
 }

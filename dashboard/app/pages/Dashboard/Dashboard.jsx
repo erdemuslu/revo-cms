@@ -1,24 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import axios from 'axios';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Editor from '../../components/Editor/Editor';
-import Posts from '../../components/Posts/Posts';
 
 const Dashboard = () => {
-  const [name] = useState(sessionStorage.getItem('email') || '');
+  console.log('dashboard');
 
   return (
     <div role="main" className="dashboard">
       <Sidebar />
       <div className="dashboard-main" role="main">
-        <h4>
-          Welcome
-          { ' ' }
-          { name }
-        </h4>
         <Editor />
-        <Posts />
       </div>
     </div>
   );
