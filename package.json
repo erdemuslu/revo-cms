@@ -35,7 +35,7 @@
     "koa-pug": "^4.0.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "mongoose": "^5.5.8",
+    "mongoose": "^5.7.5",
     "mongoose-paginate": "^5.0.3",
     "parcel-bundler": "^1.12.3",
     "prop-types": "^15.7.2",
