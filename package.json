@@ -43,7 +43,7 @@
     "react-dom": "^16.9.0",
     "react-simplemde-editor": "^4.1.0",
     "showdown": "^1.9.0",
-    "validator": "^10.11.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
